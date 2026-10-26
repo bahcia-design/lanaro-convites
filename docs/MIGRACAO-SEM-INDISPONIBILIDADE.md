@@ -51,3 +51,9 @@ Não enviar formulário de produção para fazer teste. Usar o endereço de pré
 ## Critério para autorizar a mudança
 
 Não trocar o DNS enquanto os bancos da loja/galeria estiverem faltando, as rotas PHP não estiverem testadas, o formulário não estiver configurado ou não existir um plano para dados gravados durante a propagação. O visual do site por si só não confirma que a migração operacional está completa.
+
+## Prévia visual no GitHub Pages
+
+O workflow `.github/workflows/visual-preview.yml` prepara uma prévia pública apenas dos arquivos estáticos (HTML, CSS, JavaScript e imagens). Ele não publica nem executa PHP, não inclui bancos/logs/ZIPs e não altera o domínio de produção. Essa prévia serve para comparar o visual; não substitui uma hospedagem PHP nem valida loja, galeria ou formulários.
+
+Para ativá-la uma vez, a pessoa com acesso de administradora do repositório precisa abrir **Settings → Pages → Build and deployment → Source**, selecionar **GitHub Actions** e salvar. Depois, em **Actions → Visual preview → Run workflow**, selecionar `codex/lanaro-replica` e iniciar a execução. O endereço de prévia esperado é `https://bahcia-design.github.io/lanaro-convites/`.
