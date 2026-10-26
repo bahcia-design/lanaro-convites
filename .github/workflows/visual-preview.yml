@@ -1,0 +1,57 @@
+name: Visual preview
+
+on:
+  push:
+    branches:
+      - codex/lanaro-replica
+    paths:
+      - "site/**"
+      - ".github/workflows/visual-preview.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out the replica source
+        uses: actions/checkout@v6
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare a static-only visual preview
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          cp site/*.html dist/
+          for directory in assets css fonts img js; do
+            if [[ -d "site/$directory" ]]; then
+              cp -R "site/$directory" "dist/$directory"
+            fi
+          done
+          find dist -type f \( -name '*.php' -o -name '*.sql' -o -name '*.log' -o -name '*.zip' \) -delete
+          test -s dist/index.html
+
+      - name: Upload the static preview
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+      - name: Publish the visual preview
+        id: deployment
+        uses: actions/deploy-pages@v4
