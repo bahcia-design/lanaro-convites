@@ -18,7 +18,7 @@
 
 ## Preparação do novo servidor
 
-O destino precisa executar PHP e MySQL/MariaDB, além de oferecer extensões e versão do PHP compatíveis com a versão antiga do OpenCart e com os scripts legados. Hospedagem apenas estática não atende a loja, galeria e formulários PHP.
+O projeto Vercel desta etapa serve a prévia visual estática. O código recuperado também contém OpenCart 3.0.2.0, galeria e formulários PHP. A Vercel documenta runtimes PHP comunitários, mas eles exigem configuração e validação próprias; não são uma migração automática do cPanel. A loja, galeria e formulários não devem ser apontados para o domínio de produção antes de uma estratégia testada para PHP, banco de dados, sessões, gravação de arquivos e envio de e-mail.
 
 1. Criar o ambiente novo com um endereço de prévia ou subdomínio temporário; manter o domínio principal apontado para o cPanel.
 2. Restaurar os bancos no servidor novo e guardar configurações e credenciais fora do Git, com permissões restritas.
@@ -52,8 +52,8 @@ Não enviar formulário de produção para fazer teste. Usar o endereço de pré
 
 Não trocar o DNS enquanto os bancos da loja/galeria estiverem faltando, as rotas PHP não estiverem testadas, o formulário não estiver configurado ou não existir um plano para dados gravados durante a propagação. O visual do site por si só não confirma que a migração operacional está completa.
 
-## Prévia visual no GitHub Pages
+## Prévia visual na Vercel
 
-O workflow `.github/workflows/visual-preview.yml` prepara uma prévia pública apenas dos arquivos estáticos (HTML, CSS, JavaScript e imagens). Ele não publica nem executa PHP, não inclui bancos/logs/ZIPs e não altera o domínio de produção. Essa prévia serve para comparar o visual; não substitui uma hospedagem PHP nem valida loja, galeria ou formulários.
+O `vercel.json` e `scripts/build-vercel-preview.mjs` geram uma prévia visual a partir dos HTML, CSS, JavaScript, fontes e imagens de `site/`. O build exclui arquivos PHP, SQL, logs, ZIPs e configurações. Ele não altera o domínio de produção. Essa prévia serve para comparar o visual; não valida loja, galeria ou formulários.
 
-Para ativá-la uma vez, a pessoa com acesso de administradora do repositório precisa abrir **Settings → Pages → Build and deployment → Source**, selecionar **GitHub Actions** e salvar. Depois, em **Actions → Visual preview → Run workflow**, selecionar `codex/lanaro-replica` e iniciar a execução. O endereço de prévia esperado é `https://bahcia-design.github.io/lanaro-convites/`.
+O projeto Vercel será ligado à branch `codex/lanaro-replica`; o primeiro deploy cria uma URL de prévia sem ligar o domínio `lanaroconvites.com.br`. As URLs de prévia podem ser abertas em desktop, tablet e celular para comparação. Nenhuma alteração de DNS faz parte deste passo.

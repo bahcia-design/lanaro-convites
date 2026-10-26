@@ -1,6 +1,7 @@
 # Local work and generated handoff files
 /work/
 /outputs/
+/dist/
 *.zip
 
 # Credentials, exports, and runtime state from cPanel
