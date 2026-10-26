@@ -1,0 +1,20 @@
+body {padding-top: 70px}
+footer {margin: 50px 0}
+
+.central{text-align:center}
+.img32{width:64px}
+.imgcomm{width:300px}
+.italico{font-style:italic}
+.margemabaixo{margin-bottom: 20px}
+.negrito{font-weight:bold}
+.oculto{display:none}
+.thumb {margin-bottom: 30px}
+
+.teste{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100px;
+	height:100px;
+	background-color:#000;
+}

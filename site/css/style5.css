@@ -1,0 +1,393 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:500,600,700,100,800,900,400,200,300);
+@import url(http://fonts.googleapis.com/css?family=Playball);
+
+@font-face {
+     font-family: avirnext;
+     src: url('../fonts/fonts/AvenirNextLTPro-Regular.otf');
+}
+
+body, html{
+	background-color:#F5F3E4;
+	font-family: 'avirnext', sans-serif;
+	text-rendering: optimizeLegibility !important;
+	-webkit-font-smoothing: antialiased !important;
+}
+
+#div-recado {
+	width: 640px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 50px;
+}
+
+@media (min-width: 1200px){
+	.container {
+		width: 1100px;
+	}
+}
+
+@media (max-width: 800px){
+	#div-recado {
+		width: 300px;
+		margin-right: auto;
+		margin-left: auto;
+		margin-top: 20px;		
+	}
+}
+
+/* --- Estilos criados para LaNaRo --- */
+.margemabaixo {
+	padding-bottom:20px;
+}
+.esquerda { text-align: left; }
+.pb {
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+.iconeshome {
+
+}
+.iconeshome:hover{
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+.textos_topo{
+	color: #857760;
+}
+a {color:#857760}
+/* --- Fim dos Estilos criados para LaNaRo --- */
+
+
+h1{
+	text-transform: uppercase;
+}
+
+h2{
+	line-height: 20px;
+	margin:  0;
+}
+
+h4 {
+	margin-bottom: 20px;
+	font-size: 16px;
+	font-weight: 700;
+	color: rgb(47, 147, 123);
+}
+p{
+	font-size: 13px;
+}
+
+a { 
+	color: #857760;
+	transition: all 0.8;
+}
+a:hover,
+a:focus{
+	color: #000;
+	text-decoration: none;
+}
+
+a.green { 
+	color: #857760;
+	transition: all 0.8;
+}
+a.green:hover,
+a.green:focus{
+	text-decoration: underline;
+}
+
+.tdiasem{padding:5px;}
+.tdiames{padding:5px;}
+
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+
+.pgrande{font-size:14px}
+
+/* Home Style */
+#tf-home{
+	/*background: url(../img/02.jpg);*/
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	color: #857760;
+}
+
+.content{
+	padding: 5% 0 18% 0;
+	text-align: center;
+}
+/* Navigation */
+#tf-menu {
+	margin-bottom: 0;
+	background: transparent;
+	border: 0;
+	color: #fff !important;
+	padding: 2% 0;
+	transition: all 0.5s;
+}
+#sticky {
+    padding: 0.5ex;
+    background-color: #333;
+    color: #fff;
+    font-size: 2em;
+    border-radius: 0.5ex;
+}
+#tf-menu.stick {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+    background: #F5F3E4;
+    padding: 1% 0;
+}
+#tf-menu.navbar-default .navbar-nav > li > a {
+	/*color: #000;*/
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+#tf-menu.navbar-default .navbar-nav > li > a:hover, 
+#tf-menu.navbar-default .navbar-nav > li > a:focus {
+	color: #857760;
+	background-color: transparent;
+}
+
+.logo {
+	font-family: 'avirnext', cursive;
+}
+
+#tf-service{
+	padding: 7% 0; 
+}
+
+.media-left.media-middle i {
+	padding: 20px 30px 20px 0;
+	font-size: 30px;
+	color: rgb(47, 147, 123);
+
+}
+
+.media-body h4 {
+	margin-bottom: 20px;
+	font-size: 16px;
+	font-weight: 700;
+	color: rgb(47, 147, 123);
+}
+
+#tf-portfolio{
+	background: #f1f1f1;
+	padding: 5%  0 8% 0;
+	text-align: center;
+}
+
+.section-title hr{
+	border-color: rgb(47, 147, 123);
+	width: 60px;
+}
+
+.section-title h2{ font-weight: 700;}
+button.btn,
+a.btn {
+	margin: 15px 5px;
+	transition: all 0.5s;
+}
+button.btn.btn-primary.my-btn,
+a.btn.btn-primary.my-btn {
+	background: #857760;
+	border-color: transparent;
+	border-radius: 0px;
+	border-width: 2px;
+	padding: 10px 30px;
+	text-transform: uppercase;
+	font-size: 12px;
+	letter-spacing: 1px;
+	font-weight: 600;
+}
+button.btn.btn-primary.my-btn:hover,
+a.btn.btn-primary.my-btn:hover{
+	background: #FFFFFF;
+	color: #857760;
+	border-color: transparent;
+}
+button.btn.btn-primary.my-btn.dark:hover,
+a.btn.btn-primary.my-btn.dark:hover{
+	background: #222222;
+	color: #ffffff;
+	border-color: transparent;
+}
+a.btn.btn-primary.my-btn2 {
+	background: rgba(47, 147, 123, 0);
+	border-color: #FFFFFF;
+	border-radius: 0px;
+	border-width: 2px;
+	padding: 10px 30px;
+	text-transform: uppercase;
+	font-size: 12px;
+	letter-spacing: 1px;
+	font-weight: 600;
+	color: #FFFFFF;
+}
+
+a.btn.btn-primary.my-btn2:hover{
+	background: #857760;
+	color: #ffffff;
+	border-color: transparent;
+}
+
+ul.cat.list-inline li a {
+	border: 1px solid #857760;
+	padding: 5px 15px;
+	font-size: 11px;
+	text-transform: uppercase;
+	font-weight: 600;
+	letter-spacing: 1px;
+	color: #857760;
+	transition: all 0.5s;
+}
+
+ul.cat.list-inline li a:hover{
+	background: #857760;
+	color: #ffffff;
+}
+
+.space{ padding: 20px}
+.toppadding{ padding-top: 30px}
+.nopadding{ padding:  0;}
+
+#tf-about{
+	/*background: url(../img/07.jpg);*/
+	background-size: cover;
+	background-position: center;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	color: #222222;
+	text-align: center;
+}
+
+#tf-about .overlay{
+	height: auto;
+	background-attachment: fixed;
+	padding: 10% 0;
+}
+
+#tf-news{
+	/*background: url(../img/08.jpg);*/
+	background-size: cover;
+	background-position: center;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	color: #222222;
+}
+
+#tf-news .overlay{
+	height: auto;
+	background-attachment: fixed;
+	padding: 5% 0;
+}
+
+#tf-calendar{
+	/*background: url(../img/11.jpg);*/
+	background-size: cover;
+	background-position: center;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	color: #222222;
+}
+
+#tf-calendar .overlay{
+	height: auto;
+	background-attachment: fixed;
+	padding: 10% 0;
+}
+
+#tf-services{
+	/*background: url(../img/10.jpg);*/
+	background-size: cover;
+	background-position: center;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	color: #222222;
+}
+
+#tf-services .overlay{
+	height: auto;
+	background-attachment: fixed;
+	padding: 5% 0;
+}
+ul.why-me li{
+	margin: 10px 0;
+}
+#tf-contact{
+	/*background: url(../img/12.jpg);*/
+	background-size: cover;
+	background-position: center;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	padding: 5% 0;
+	text-align: center;
+}
+
+form#contact {
+	padding: 5%;
+	background: #f1f1f1;
+	outline: 6px solid rgba(34, 34, 34, 0.08);
+}
+
+#tf-contact input.form-control {
+	height: 40px;
+}
+
+#tf-contact .form-control{
+	display: block;
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 16px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #FFF;
+	background-image: none;
+	border: 1px solid #FFF;
+	border-radius: 0;
+	border-top: 2px solid transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	-webkit-transition: none;
+	-o-transition: none;
+	transition: all 0.8s;
+}
+#tf-contact .form-control:focus,
+#tf-contact .form-control:hover{
+	border-top: 2px solid #857760;
+}
+
+.blackinput {
+	color: #fff;
+	background-color: rgba(0,0,0,0.4);
+	text-align:center;
+}
+
+nav#tf-footer {
+	background: #222222;
+	padding: 3% 0 2% 0;
+	color: #f1f1f1;
+}

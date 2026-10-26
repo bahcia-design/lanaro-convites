@@ -1,0 +1,25 @@
+# Local work and generated handoff files
+/work/
+/outputs/
+*.zip
+
+# Credentials, exports, and runtime state from cPanel
+/site/.env
+/site/.env.*
+!/site/.env.example
+/site/loja/config.php
+/site/loja/admin/config.php
+/site/gallery/site/config.php
+/site/gallery/site/dbconf.php
+/site/gallery/site/connmysql.php
+/site/gallery/site/pgconfig.php
+/site/gallery/site/pgconfigphp.php
+/site/**/*.sql
+/site/**/error_log
+/site/**/error.log
+/site/loja/system/storage/cache/
+/site/loja/system/storage/logs/
+/site/loja/system/storage/session/
+/site/loja/system/storage/modification/
+/site/loja/system/storage/download/
+/site/loja/system/storage/upload/
