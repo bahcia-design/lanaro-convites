@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Hostinger checks this path for domain and certificate validation.
+  RewriteRule ^\.well-known/ - [L]
+
+  # The recovered public_html lives in site/ within this repository.
+  RewriteRule ^site/ - [L]
+  RewriteRule ^$ site/index.html [L]
+  RewriteRule ^(.+)$ site/$1 [L]
+</IfModule>
