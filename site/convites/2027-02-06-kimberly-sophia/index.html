@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kimberly Sophia · 15 Anos · Baile de Inverno</title>
+<meta name="description" content="Convite para os 15 anos de Kimberly Sophia — Baile de Inverno, 06/02/2027 às 20h00.">
+<meta property="og:title" content="Kimberly Sophia · 15 Anos">
+<meta property="og:description" content="Baile de Inverno — 06 de fevereiro de 2027, às 20h00. Le Partie Eventos, Nova Odessa.">
+<meta property="og:image" content="assets/poster.jpg">
+<meta name="theme-color" content="#a9cdee">
+<meta name="robots" content="noindex, nofollow">
+<script>/* garante a barra final para os caminhos relativos funcionarem */
+if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))location.replace(location.pathname+'/'+location.search+location.hash);</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="config.js"></script>
+<style>
+  :root{
+    --navy:#2c4a6b; --ice:#dcebf8; --ice2:#a9cdee; --silver:#c9d2dc;
+    --ratio: 1652 / 2954;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:#9cc2e6;overflow:hidden;-webkit-tap-highlight-color:transparent}
+  body{font-family:"Cormorant Garamond",Georgia,serif;color:var(--navy);display:grid;place-items:center}
+  .bg{position:fixed;inset:-40px;background:url(assets/abertura.jpg) center/cover;filter:blur(28px) brightness(1.05);opacity:.85}
+  .stage{position:relative;aspect-ratio:var(--ratio);height:min(100dvh,calc(100vw / (1652/2954)));max-width:100vw;
+         overflow:hidden;box-shadow:0 0 60px rgba(20,50,90,.35);background:#cfe3f5}
+  .layer{position:absolute;inset:0;width:100%;height:100%}
+  video.layer{object-fit:cover}
+  .final{opacity:0;pointer-events:none;transition:opacity .4s ease;z-index:2}
+  .final.on{opacity:1;pointer-events:auto}
+  .final img{width:100%;height:100%;display:block;user-select:none;-webkit-user-drag:none}
+
+  /* botões reais por cima dos desenhados na arte */
+  .hot{position:absolute;width:21%;aspect-ratio:1;border-radius:50%;border:0;background:transparent;cursor:pointer;
+       transform:translate(-50%,-50%);top:76.7%}
+  .hot::after{content:"";position:absolute;inset:6%;border-radius:50%;box-shadow:0 0 0 0 rgba(255,255,255,.7);animation:pulse 2.4s infinite}
+  #bMap::after{animation-delay:.4s}#bGift::after{animation-delay:.8s}
+  .hot:active{transform:translate(-50%,-50%) scale(.95)}
+  .hot:focus-visible{outline:3px solid #fff;outline-offset:2px}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.65)}70%{box-shadow:0 0 0 14px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  canvas.fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;transition:opacity .8s}
+  canvas.fx.hide{opacity:0}
+  .btn{font:600 clamp(15px,4.2vw,19px)/1 "Cormorant Garamond",serif;letter-spacing:.12em;text-transform:uppercase;
+       color:var(--navy);background:linear-gradient(180deg,#fff,#dbe9f7);border:2px solid #fff;border-radius:999px;
+       padding:14px 26px;box-shadow:0 6px 24px rgba(40,80,130,.35),inset 0 0 0 1px #b8c8d8;cursor:pointer}
+  @keyframes breathe{50%{transform:scale(1.05)}}
+
+
+  /* modais */
+  dialog{border:0;padding:0;background:transparent;max-width:none;max-height:none;margin:auto}
+  dialog::backdrop{background:rgba(20,45,75,.55);backdrop-filter:blur(3px)}
+  .card{width:min(92vw,420px);background:linear-gradient(180deg,#f4f9fe,#dcebf8);border:2px solid #fff;border-radius:22px;
+        padding:26px 22px 22px;box-shadow:0 20px 60px rgba(20,50,90,.4),inset 0 0 0 1px #c6d6e6;text-align:center}
+  .card h2{font:400 44px/1 "Great Vibes",cursive;color:#7f8a96;margin-bottom:6px}
+  .card p{font-size:17px;margin-bottom:16px}
+  .card label{display:block;text-align:left;font-weight:600;font-size:15px;letter-spacing:.06em;text-transform:uppercase;margin:12px 0 6px}
+  .card input,.card select,.card textarea{width:100%;font:500 18px "Cormorant Garamond",serif;color:var(--navy);
+        background:#fff;border:1px solid #b9cde0;border-radius:12px;padding:11px 13px}
+  .card textarea{resize:vertical;min-height:64px}
+  .row{display:flex;gap:10px;margin-top:20px}.row .btn{flex:1;padding:13px 10px}
+  .btn.ghost{background:transparent;box-shadow:none;border-color:#b9cde0}
+  .gift{position:relative;height:min(92dvh,calc(92vw * 2954 / 1652));aspect-ratio:var(--ratio);border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+  .gift img{width:100%;height:100%;display:block}
+  .x{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid #fff;background:rgba(30,60,95,.55);color:#fff;font-size:22px;cursor:pointer}
+  .err{color:#a33;font-size:15px;min-height:18px;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+
+<main class="stage" id="stage">
+  <video class="layer" id="vid" src="assets/convite.mp4" playsinline autoplay muted preload="auto" poster="assets/primeiro-quadro.jpg"></video>
+
+  <section class="layer final" id="final" aria-label="Convite">
+    <img src="assets/convite.jpg" alt="Convite: Kimberly Sophia 15 anos. 06 de fevereiro de 2027 às 20h00, Le Partie Eventos, Rua Darcy Carrion, 121, Pq. Ind. Harmonia, Nova Odessa. Traje social obrigatório em tons de branco, cinza e azul-marinho.">
+    <a class="hot" style="left:22.6%" id="bRsvp" target="_blank" rel="noopener"><span class="sr">Confirmar presença</span></a>
+    <a class="hot" style="left:50.2%" id="bMap" target="_blank" rel="noopener"><span class="sr">Como chegar</span></a>
+    <button class="hot" style="left:76.7%" id="bGift"><span class="sr">Sugestão de presentes</span></button>
+  </section>
+
+  <audio id="bgm" loop preload="auto"></audio>
+  <canvas class="fx" id="fx"></canvas>
+
+</main>
+
+<dialog id="dRsvp">
+  <form class="card" id="fRsvp" method="dialog" novalidate>
+    <h2>Confirmar presença</h2>
+    <p>Que alegria ter você nessa noite mágica!</p>
+    <label for="nome">Seu nome</label>
+    <input id="nome" name="nome" autocomplete="name" placeholder="Nome e sobrenome" required>
+    <label for="qtd">Quantas pessoas (incluindo você)</label>
+    <select id="qtd" name="qtd"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+    <label for="msg">Recadinho (opcional)</label>
+    <textarea id="msg" name="msg" placeholder="Deixe uma mensagem para a aniversariante"></textarea>
+    <div class="err" id="err"></div>
+    <div class="row">
+      <button type="button" class="btn ghost" id="cancel">Voltar</button>
+      <a class="btn" id="send" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">Enviar</a>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dGift">
+  <div class="gift">
+    <img src="assets/presentes.jpg" alt="Sugestão de presentes: produtos de skincare; maquiagem; calçado nº 37/38; blusinha tamanho M; short nº 38; acessórios prata e/ou dourado; perfumes doces e fortes. Qualquer presente é bem-vindo.">
+    <button class="x" id="closeGift" aria-label="Fechar">×</button>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  const C = window.CONVITE || {};
+  const $ = id => document.getElementById(id);
+  const vid = $('vid'), fin = $('final');
+  const AT = C.telaFinalEm || 35.2;
+
+  // neve + brilhos (tela inicial e tela final)
+  const cv = $('fx'), cx = cv.getContext('2d');
+  const GL = { intro: [[23.3, 83.3], [51.6, 79.2], [11.7, 6.6], [21.1, 17.0], [48.1, 78.0], [99.2, 87.9], [45.6, 88.1], [48.5, 97.9], [5.6, 41.7], [77.5, 32.4], [23.3, 33.0], [75.7, 57.6], [54.8, 81.1], [13.5, 3.6], [73.1, 5.6], [66.0, 84.5]], final: [[0.5, 51.8], [82.1, 51.0], [7.7, 88.3], [69.8, 43.1], [9.6, 50.7], [99.0, 38.7], [97.6, 31.7], [84.6, 60.2], [71.3, 9.0], [49.2, 4.5], [88.0, 63.3], [98.2, 48.6]] };
+  let mode = 'off', W = 0, H = 0, dpr = 1;
+  const fit = () => { const r = cv.getBoundingClientRect(); dpr = Math.min(2, devicePixelRatio || 1);
+    W = cv.width = r.width * dpr; H = cv.height = r.height * dpr; };
+  addEventListener('resize', fit); fit();
+  const flakes = Array.from({length: 70}, () => ({x: Math.random(), y: Math.random(), r: .6 + Math.random() * 2.2,
+    v: .02 + Math.random() * .05, s: Math.random() * 6.28}));
+  const ph = Array.from({length: 20}, () => [Math.random() * 6.28, .6 + Math.random() * .8]);
+  const star = (x, y, r, a) => {
+    cx.globalAlpha = a; cx.strokeStyle = '#fff'; cx.lineWidth = 1.4 * dpr; cx.beginPath();
+    cx.moveTo(x - r, y); cx.lineTo(x + r, y); cx.moveTo(x, y - r * 1.3); cx.lineTo(x, y + r * 1.3); cx.stroke();
+    const g = cx.createRadialGradient(x, y, 0, x, y, r * .6); g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+    cx.fillStyle = g; cx.beginPath(); cx.arc(x, y, r * .6, 0, 6.29); cx.fill(); };
+  let last = performance.now();
+  const loop = now => {
+    const dt = Math.min(.05, (now - last) / 1000); last = now; const t = now / 1000;
+    cx.clearRect(0, 0, W, H);
+    if (mode !== 'off') {
+      cx.fillStyle = '#fff';
+      for (const f of flakes) {
+        f.y += f.v * dt; if (f.y > 1.02) { f.y = -.02; f.x = Math.random(); }
+        const x = (f.x + Math.sin(t * .7 + f.s) * .012) * W, y = f.y * H;
+        cx.globalAlpha = .75; cx.beginPath(); cx.arc(x, y, f.r * dpr, 0, 6.29); cx.fill();
+      }
+      (GL[mode] || []).forEach(([px, py], i) => {
+        const a = Math.pow(Math.max(0, Math.sin(t * 2 * ph[i][1] + ph[i][0])), 6);
+        if (a > .02) star(px / 100 * W, py / 100 * H, (6 + 10 * a) * dpr, a);
+      });
+      cx.globalAlpha = 1;
+    }
+    requestAnimationFrame(loop);
+  };
+  requestAnimationFrame(loop);
+  const setFx = m => { mode = m; cv.classList.toggle('hide', m === 'off'); };
+
+  const showFinal = () => { fin.classList.add('on'); setFx('final'); };
+
+  // Som: se config.js tiver "musica", ela toca de fundo (em loop) e o vídeo fica mudo.
+  // Sem "musica", usa o áudio do próprio vídeo. Navegadores bloqueiam som antes do 1º toque.
+  const bgm = $('bgm'); const useBgm = !!C.musica;
+  if (useBgm) { bgm.src = C.musica; bgm.volume = 0; }
+  const src = useBgm ? bgm : vid;
+  const fadeIn = () => { if (!useBgm) return; const v0 = Number(C.volume ?? .8); let v = 0;
+    const id = setInterval(() => { v = Math.min(v0, v + .04); bgm.volume = v; if (v >= v0) clearInterval(id); }, 60); };
+  setFx('off');
+  // Começa sozinho. Navegadores bloqueiam som antes do 1º toque: nesse caso o vídeo toca mudo
+  // e o primeiro toque em qualquer lugar da tela liga o som (sem botões na tela).
+  let needTap = false;
+  const unmute = () => { needTap = false;
+    if (useBgm) { bgm.muted = false; bgm.play().then(fadeIn).catch(() => {}); } else vid.muted = false;
+    if (vid.paused) vid.play().catch(() => {}); };
+  const start = () => {
+    if (useBgm) {
+      vid.muted = true; vid.play().catch(() => {});
+      bgm.play().then(fadeIn).catch(() => { needTap = true; });
+    } else {
+      vid.muted = false;
+      vid.play().catch(() => { vid.muted = true; vid.play().catch(() => {}); needTap = true; });
+    }
+  };
+  const onTap = () => { if (needTap) unmute(); };
+  ['pointerdown', 'touchstart', 'keydown'].forEach(ev => addEventListener(ev, onTap, { passive: true }));
+  start();
+  vid.addEventListener('timeupdate', () => { if (vid.currentTime >= AT && !fin.classList.contains('on')) showFinal(); });
+  vid.addEventListener('ended', showFinal);
+
+  // Como chegar
+  $('bMap').href = C.mapsUrl;
+
+  // Sugestão de presentes
+  const dGift = $('dGift');
+  $('bGift').onclick = () => dGift.showModal();
+  $('closeGift').onclick = () => dGift.close();
+  dGift.addEventListener('click', e => { if (e.target === dGift) dGift.close(); });
+
+  // Confirmar presença -> WhatsApp com mensagem pronta
+  const dR = $('dRsvp'), f = $('fRsvp'), send = $('send');
+  const num = String(C.whatsapp || '').replace(/\D/g, '');
+  const build = () => {
+    const nome = $('nome').value.trim(), qtd = $('qtd').value, msg = $('msg').value.trim();
+    let t = `Olá! Confirmo minha presença nos 15 anos da ${C.aniversariante || 'aniversariante'} 💙❄️\n\n` +
+            `Nome: ${nome}\nPessoas: ${qtd}`;
+    if (msg) t += `\nRecado: ${msg}`;
+    send.href = (num ? `https://wa.me/${num}` : 'https://wa.me/') + '?text=' + encodeURIComponent(t);
+  };
+  f.addEventListener('input', build); build();
+  // Se houver link de confirmação (ex.: Assessoria VIP), o botão abre direto; senão, formulário -> WhatsApp
+  if (C.rsvpUrl) $('bRsvp').href = C.rsvpUrl;
+  else $('bRsvp').onclick = e => { e.preventDefault(); $('err').textContent = ''; dR.showModal(); };
+  $('cancel').onclick = () => dR.close();
+  dR.addEventListener('click', e => { if (e.target === dR) dR.close(); });
+  f.addEventListener('submit', e => e.preventDefault());
+  send.addEventListener('click', e => {
+    if (!$('nome').value.trim()) { e.preventDefault(); $('err').textContent = 'Por favor, escreva seu nome.'; $('nome').focus(); return; }
+    setTimeout(() => { dR.close(); f.reset(); build(); }, 300);
+  });
+})();
+</script>
+</body>
+</html>
