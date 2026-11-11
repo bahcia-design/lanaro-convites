@@ -52,11 +52,15 @@ if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))lo
   @keyframes breathe{50%{transform:scale(1.05)}}
   /* tela inicial: o próprio 1º quadro do vídeo (envelope fechado) + botão */
   .intro{position:absolute;inset:0;z-index:5;background:url(assets/primeiro-quadro.jpg) center/cover;cursor:pointer;
-         display:flex;align-items:flex-end;justify-content:center;padding-bottom:9%;transition:opacity .35s ease}
+         display:flex;align-items:flex-end;justify-content:center;padding-bottom:3.2%;transition:opacity .35s ease}
   .intro.off{opacity:0;pointer-events:none}
-  .intro .btn{position:relative;overflow:hidden;opacity:0;animation:fadeUp .9s .4s ease forwards, breathe 2.6s 1.3s ease-in-out infinite}
+  .intro .btn{position:relative;overflow:hidden;opacity:0;animation:fadeUp .9s .4s ease forwards, soft 3.2s 1.3s ease-in-out infinite;
+         font:500 clamp(12px,3.3vw,14px)/1 "Cormorant Garamond",serif;letter-spacing:.28em;color:#fff;
+         background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:10px 22px 10px 25px;
+         box-shadow:0 2px 14px rgba(20,50,90,.18);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);text-shadow:0 1px 6px rgba(20,50,90,.45)}
+  @keyframes soft{50%{box-shadow:0 0 18px rgba(255,255,255,.45);border-color:#fff}}
   .intro .btn::before{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;
-         background:linear-gradient(100deg,transparent,rgba(255,255,255,.95),transparent);animation:sweep 3s 1s ease-in-out infinite}
+         background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);animation:sweep 3.6s 1s ease-in-out infinite}
   @keyframes sweep{0%{left:-60%}55%,100%{left:130%}}
 
 
