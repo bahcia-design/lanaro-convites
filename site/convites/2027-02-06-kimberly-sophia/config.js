@@ -13,10 +13,12 @@ window.CONVITE = {
   // Botão "Como chegar"
   mapsUrl: "https://maps.app.goo.gl/cxby47JpSt6AZqW26",
 
-  // Música de fundo (opcional). Coloque o arquivo em assets/ e informe o caminho,
-  // ex.: "assets/musica.mp3". Ela toca em loop e substitui o áudio do vídeo.
-  // Deixe "" para usar o áudio do próprio vídeo.
-  musica: "assets/musica.mp3",
+  // A música já está DENTRO do vídeo (assets/convite.mp4): um único play no toque,
+  // que funciona inclusive no navegador do WhatsApp no Android. Depois da tela final
+  // o vídeo segue com a imagem parada até a música terminar.
+  // (Opcional) arquivo de áudio separado, ex.: "assets/musica.mp3" — evite: no WhatsApp/Android
+  // dois áudios no mesmo toque podem ser bloqueados.
+  musica: "",
   volume: 0.8,
 
   // Momento (em segundos) em que a tela final do convite aparece no vídeo
