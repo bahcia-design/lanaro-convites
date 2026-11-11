@@ -44,12 +44,20 @@ if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))lo
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
   @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  canvas.fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;transition:opacity .8s}
+  canvas.fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:6;transition:opacity .8s}
   canvas.fx.hide{opacity:0}
   .btn{font:600 clamp(15px,4.2vw,19px)/1 "Cormorant Garamond",serif;letter-spacing:.12em;text-transform:uppercase;
        color:var(--navy);background:linear-gradient(180deg,#fff,#dbe9f7);border:2px solid #fff;border-radius:999px;
        padding:14px 26px;box-shadow:0 6px 24px rgba(40,80,130,.35),inset 0 0 0 1px #b8c8d8;cursor:pointer}
   @keyframes breathe{50%{transform:scale(1.05)}}
+  /* tela inicial: o próprio 1º quadro do vídeo (envelope fechado) + botão */
+  .intro{position:absolute;inset:0;z-index:5;background:url(assets/primeiro-quadro.jpg) center/cover;cursor:pointer;
+         display:flex;align-items:flex-end;justify-content:center;padding-bottom:9%;transition:opacity .35s ease}
+  .intro.off{opacity:0;pointer-events:none}
+  .intro .btn{position:relative;overflow:hidden;opacity:0;animation:fadeUp .9s .4s ease forwards, breathe 2.6s 1.3s ease-in-out infinite}
+  .intro .btn::before{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;
+         background:linear-gradient(100deg,transparent,rgba(255,255,255,.95),transparent);animation:sweep 3s 1s ease-in-out infinite}
+  @keyframes sweep{0%{left:-60%}55%,100%{left:130%}}
 
 
   /* modais */
@@ -75,7 +83,7 @@ if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))lo
 <div class="bg" aria-hidden="true"></div>
 
 <main class="stage" id="stage">
-  <video class="layer" id="vid" src="assets/convite.mp4" playsinline autoplay muted preload="auto" poster="assets/primeiro-quadro.jpg"></video>
+  <video class="layer" id="vid" src="assets/convite.mp4" playsinline preload="auto" poster="assets/primeiro-quadro.jpg"></video>
 
   <section class="layer final" id="final" aria-label="Convite">
     <img src="assets/convite.jpg" alt="Convite: Kimberly Sophia 15 anos. 06 de fevereiro de 2027 às 20h00, Le Partie Eventos, Rua Darcy Carrion, 121, Pq. Ind. Harmonia, Nova Odessa. Traje social obrigatório em tons de branco, cinza e azul-marinho.">
@@ -85,6 +93,9 @@ if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))lo
   </section>
 
   <audio id="bgm" loop preload="auto"></audio>
+  <div class="intro" id="intro" role="button" aria-label="Abrir convite">
+    <span class="btn">Abrir convite</span>
+  </div>
   <canvas class="fx" id="fx"></canvas>
 
 </main>
@@ -123,7 +134,7 @@ if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))lo
 
   // neve + brilhos (tela inicial e tela final)
   const cv = $('fx'), cx = cv.getContext('2d');
-  const GL = { intro: [[23.3, 83.3], [51.6, 79.2], [11.7, 6.6], [21.1, 17.0], [48.1, 78.0], [99.2, 87.9], [45.6, 88.1], [48.5, 97.9], [5.6, 41.7], [77.5, 32.4], [23.3, 33.0], [75.7, 57.6], [54.8, 81.1], [13.5, 3.6], [73.1, 5.6], [66.0, 84.5]], final: [[0.5, 51.8], [82.1, 51.0], [7.7, 88.3], [69.8, 43.1], [9.6, 50.7], [99.0, 38.7], [97.6, 31.7], [84.6, 60.2], [71.3, 9.0], [49.2, 4.5], [88.0, 63.3], [98.2, 48.6]] };
+  const GL = { intro: [[60.6, 52.5], [15.6, 53.5], [57.1, 36.6], [46.2, 5.2], [78.2, 18.4], [30.3, 28.4], [62.1, 54.0], [51.0, 53.0], [67.8, 54.0], [3.5, 5.8], [28.9, 29.8], [63.3, 52.6], [70.3, 54.1], [56.1, 70.3]], final: [[0.5, 51.8], [82.1, 51.0], [7.7, 88.3], [69.8, 43.1], [9.6, 50.7], [99.0, 38.7], [97.6, 31.7], [84.6, 60.2], [71.3, 9.0], [49.2, 4.5], [88.0, 63.3], [98.2, 48.6]] };
   let mode = 'off', W = 0, H = 0, dpr = 1;
   const fit = () => { const r = cv.getBoundingClientRect(); dpr = Math.min(2, devicePixelRatio || 1);
     W = cv.width = r.width * dpr; H = cv.height = r.height * dpr; };
@@ -195,7 +206,12 @@ if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))lo
   };
   const onTap = () => { if (needTap) unmute(); };
   ['touchend', 'pointerup', 'click', 'keydown'].forEach(ev => addEventListener(ev, onTap, { passive: true }));
-  start();
+  const intro = $('intro');
+  setFx('intro');
+  intro.addEventListener('click', () => {
+    intro.classList.add('off'); setFx('off');
+    vid.currentTime = 0; start();
+  }, { once: true });
   vid.addEventListener('timeupdate', () => { if (vid.currentTime >= AT && !fin.classList.contains('on')) showFinal(); });
   vid.addEventListener('ended', showFinal);
 
