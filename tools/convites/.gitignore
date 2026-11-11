@@ -1,0 +1,8 @@
+# Vídeos/artes de base (modelos comprados) e saídas intermediárias ficam fora do git (repo é público)
+modelos/**/*.mp4
+modelos/**/*.mov
+build/
+__pycache__/
+modelos/**/*.mp3
+modelos/**/*.wav
+clientes/
