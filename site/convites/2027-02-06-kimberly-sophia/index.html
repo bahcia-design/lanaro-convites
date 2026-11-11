@@ -171,9 +171,19 @@ if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))lo
   // Começa sozinho. Navegadores bloqueiam som antes do 1º toque: nesse caso o vídeo toca mudo
   // e o primeiro toque em qualquer lugar da tela liga o som (sem botões na tela).
   let needTap = false;
-  const unmute = () => { needTap = false;
-    if (useBgm) { bgm.muted = false; bgm.play().then(fadeIn).catch(() => {}); } else vid.muted = false;
-    if (vid.paused) vid.play().catch(() => {}); };
+  // No celular o som só é liberado quando o dedo SOLTA a tela (touchend/pointerup/click),
+  // então tentamos a cada toque até o navegador aceitar.
+  const unmute = () => {
+    if (useBgm) {
+      bgm.muted = false;
+      bgm.play().then(() => { needTap = false; fadeIn(); }).catch(() => {});
+      if (vid.paused) vid.play().catch(() => {});
+    } else {
+      vid.muted = false;
+      vid.play().then(() => { needTap = false; })
+        .catch(() => { vid.muted = true; vid.play().catch(() => {}); });
+    }
+  };
   const start = () => {
     if (useBgm) {
       vid.muted = true; vid.play().catch(() => {});
@@ -184,7 +194,7 @@ if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))lo
     }
   };
   const onTap = () => { if (needTap) unmute(); };
-  ['pointerdown', 'touchstart', 'keydown'].forEach(ev => addEventListener(ev, onTap, { passive: true }));
+  ['touchend', 'pointerup', 'click', 'keydown'].forEach(ev => addEventListener(ev, onTap, { passive: true }));
   start();
   vid.addEventListener('timeupdate', () => { if (vid.currentTime >= AT && !fin.classList.contains('on')) showFinal(); });
   vid.addEventListener('ended', showFinal);
