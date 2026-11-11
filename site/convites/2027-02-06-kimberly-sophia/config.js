@@ -16,7 +16,7 @@ window.CONVITE = {
   // Música de fundo (opcional). Coloque o arquivo em assets/ e informe o caminho,
   // ex.: "assets/musica.mp3". Ela toca em loop e substitui o áudio do vídeo.
   // Deixe "" para usar o áudio do próprio vídeo.
-  musica: "",
+  musica: "assets/musica.mp3",
   volume: 0.8,
 
   // Momento (em segundos) em que a tela final do convite aparece no vídeo
