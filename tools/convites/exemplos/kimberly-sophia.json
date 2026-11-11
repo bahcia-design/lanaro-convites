@@ -1,0 +1,26 @@
+{
+  "_comentario": "Convite Kimberly Sophia (06/02/2027) — modelo baile-de-inverno. Tempos em segundos do vídeo base.",
+  "video_base": "tools/convites/modelos/baile-de-inverno/base.mp4",
+  "video_fonte": "tools/convites/build/base-cabelo-castanho.mp4",
+  "saida_dir": "site/convites/2027-02-06-kimberly-sophia/assets",
+  "artes": {
+    "capa": "site/convites/2027-02-06-kimberly-sophia/assets/abertura.jpg",
+    "convite": "site/convites/2027-02-06-kimberly-sophia/assets/convite.jpg"
+  },
+  "nome_envelope": {
+    "arte": "site/convites/2027-02-06-kimberly-sophia/assets/abertura.jpg",
+    "caixa_na_arte": [1480, 1820, 70, 1560],
+    "regiao": [255, 552, 85, 690],
+    "linhas": [[330, 262, 175], [400, 392, 160]],
+    "fim_cena": 4.0
+  },
+  "tempos": {
+    "capa_inicio": 10.07,
+    "capa_dur": 3.3,
+    "dissolve": 1.1,
+    "castelo_src": 20.9,
+    "salao_fim": 39.38,
+    "convite_assenta": 41.4
+  },
+  "musica": { "arquivo": "tools/convites/modelos/baile-de-inverno/musica.mp3", "inicio": 1.72, "fim": 169.5 }
+}
