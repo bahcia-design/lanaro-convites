@@ -182,13 +182,13 @@ if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))lo
   const setFx = m => { mode = m; cv.classList.toggle('hide', m === 'off'); };
 
   const skip = $('skip');
-  const hideSkip = () => { skip.classList.remove('on'); setTimeout(() => { skip.hidden = true; }, 600); };
-  const showFinal = () => { fin.classList.add('on'); setFx('final'); hideSkip(); };
   // lembra (só neste navegador) que a pessoa já abriu este convite
   const KEY = 'convite-visto:' + location.pathname.replace(/\/+$/, '');
   let jaViu = false;
   try { jaViu = localStorage.getItem(KEY) === '1'; } catch (e) {}
   const marcarVisto = () => { try { localStorage.setItem(KEY, '1'); } catch (e) {} };
+  const hideSkip = () => { skip.classList.remove('on'); setTimeout(() => { skip.hidden = true; }, 600); };
+  const showFinal = () => { fin.classList.add('on'); setFx('final'); hideSkip(); marcarVisto(); };
   skip.addEventListener('click', e => {
     e.stopPropagation();
     if (vid.duration && vid.currentTime < AT) vid.currentTime = AT;
@@ -236,7 +236,6 @@ if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))lo
     intro.classList.add('off'); setFx('off');
     vid.currentTime = 0; start();
     if (jaViu) { skip.hidden = false; setTimeout(() => skip.classList.add('on'), 1200); }
-    marcarVisto();
   }, { once: true });
   vid.addEventListener('timeupdate', () => { if (vid.currentTime >= AT && !fin.classList.contains('on')) showFinal(); });
   vid.addEventListener('ended', showFinal);
