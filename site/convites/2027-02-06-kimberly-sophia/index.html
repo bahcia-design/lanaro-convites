@@ -62,6 +62,13 @@ if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))lo
   .intro .btn::before{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;
          background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);animation:sweep 3.6s 1s ease-in-out infinite}
   @keyframes sweep{0%{left:-60%}55%,100%{left:130%}}
+  /* "Pular vídeo": só aparece para quem já abriu este convite antes */
+  .skip{position:absolute;right:5%;bottom:3.5%;z-index:7;cursor:pointer;opacity:0;transition:opacity .6s ease;
+        font:500 clamp(11px,3vw,13px)/1 "Cormorant Garamond",serif;letter-spacing:.22em;color:#fff;
+        background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:9px 16px 9px 19px;
+        box-shadow:0 2px 14px rgba(20,50,90,.18);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);text-shadow:0 1px 6px rgba(20,50,90,.45)}
+  .skip.on{opacity:1}
+  .skip[hidden]{display:none}
 
 
   /* modais */
@@ -101,6 +108,7 @@ if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))lo
     <span class="btn">Abrir convite</span>
   </div>
   <canvas class="fx" id="fx"></canvas>
+  <button class="skip" id="skip" type="button" hidden>Pular vídeo ›</button>
 
 </main>
 
@@ -124,7 +132,7 @@ if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))lo
 
 <dialog id="dGift">
   <div class="gift">
-    <img src="assets/presentes.jpg" alt="Sugestão de presentes: produtos de skincare; maquiagem; calçado nº 37/38; blusinha tamanho M; short nº 38; acessórios prata e/ou dourado; perfumes doces e fortes. Qualquer presente é bem-vindo.">
+    <img src="assets/presentes.jpg?v=4" alt="Sugestão de presentes: produtos de skincare; maquiagem (base ou corretivo no tom 02/03; prefere batons em outros tons que não vermelho); calçado nº 37/38; blusinha tamanho M; short nº 38 (calça cargo, saias, short jeans); acessórios prata e/ou dourado; perfumes doces e fortes. Qualquer presente é bem-vindo.">
     <button class="x" id="closeGift" aria-label="Fechar">×</button>
   </div>
 </dialog>
@@ -173,7 +181,19 @@ if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))lo
   requestAnimationFrame(loop);
   const setFx = m => { mode = m; cv.classList.toggle('hide', m === 'off'); };
 
-  const showFinal = () => { fin.classList.add('on'); setFx('final'); };
+  const skip = $('skip');
+  // lembra (só neste navegador) que a pessoa já abriu este convite
+  const KEY = 'convite-visto:' + location.pathname.replace(/\/+$/, '');
+  let jaViu = false;
+  try { jaViu = localStorage.getItem(KEY) === '1'; } catch (e) {}
+  const marcarVisto = () => { try { localStorage.setItem(KEY, '1'); } catch (e) {} };
+  const hideSkip = () => { skip.classList.remove('on'); setTimeout(() => { skip.hidden = true; }, 600); };
+  const showFinal = () => { fin.classList.add('on'); setFx('final'); hideSkip(); marcarVisto(); };
+  skip.addEventListener('click', e => {
+    e.stopPropagation();
+    if (vid.duration && vid.currentTime < AT) vid.currentTime = AT;
+    showFinal();
+  });
 
   // Som: se config.js tiver "musica", ela toca de fundo (em loop) e o vídeo fica mudo.
   // Sem "musica", usa o áudio do próprio vídeo. Navegadores bloqueiam som antes do 1º toque.
@@ -215,6 +235,7 @@ if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))lo
   intro.addEventListener('click', () => {
     intro.classList.add('off'); setFx('off');
     vid.currentTime = 0; start();
+    if (jaViu) { skip.hidden = false; setTimeout(() => skip.classList.add('on'), 1200); }
   }, { once: true });
   vid.addEventListener('timeupdate', () => { if (vid.currentTime >= AT && !fin.classList.contains('on')) showFinal(); });
   vid.addEventListener('ended', showFinal);
