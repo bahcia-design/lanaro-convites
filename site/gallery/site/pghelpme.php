@@ -8,11 +8,11 @@
 		<div class="negrito"><a for="c_item1" href="javascript:void(0)" onclick="helpDisplay(this)">Acesso ao sistema</a></div>
 		<div id="c_item1" display="false" class="oculto">
 			<div class="margemabaixo">
-				O sistema <i>Gallery</i> possui apenas dos usuários:<br />
+				O sistema <i>Gallery</i> possui apenas dois usuários:<br />
 				- <b>Administrador</b>: responsável pelo gerenciamento do sistema, criação de álbuns e definição das configurações.<br />
 				- <b>Editor</b>: possui apenas permissão para gerenciar o conteúdo dos álbuns já criados. Ou seja, subir ou eliminar imagens.<br />
 				A senha dos dois tipos de usuário, bem como nome de apresentação são definidas pelo Administrador, a senha inicial do administrador é
-				"gallery", enquando do editor é apenas "editor".<br />
+				"gallery", enquanto do editor é apenas "editor".<br />
 				<b>Nota:</b> é recomendável que o Administrador altere as senhas logo após a instalação do sistema, por questões de segurança.
 			</div>
 			<div class="alert alert-danger">
@@ -28,7 +28,7 @@
 		<div id="c_item2" display="false" class="oculto">
 			<div class="margemabaixo">
 				Você pode consultar os álbuns através do link "álbuns" na home page, se você for Administrador, nesta mesma
-				página encontrará um botão "Criar novo álbum agora" onde pode criar um novo álbun de imagens.<br />
+				página encontrará um botão "Criar novo álbum agora" onde pode criar um novo álbum de imagens.<br />
 				Basta informar o nome e descrição do novo álbum para continuar. Em seguida é só enviar as imagens de seu computador
 				ou smartphone.
 			</div>
@@ -67,7 +67,7 @@
 			  - Imagem está muito pesada (muito grande) ou você está selecionando muitas imagens.<br />
 			  - O arquivo não é um tipo de imagem válido. O tipo mais recomendado é imagem em <i>JPG</i>.<br />
 			  - Sua internet está muito lenta, se estiver em uma conexão de dados, experimente acessar via uma rede WiFi.<br />
-			  - O servidor pode estar indisponível no momento. Neste caso apenas tente enviar daqui alguns minutos.<br />
+			  - O servidor pode estar indisponível no momento. Neste caso apenas tente enviar daqui a alguns minutos.<br />
 			  - Caso não encontre uma solução, anote a mensagem apresentada na tentativa de upload e informe ao desenvolvedor de seu website.
 			</div>
 		</div>
@@ -77,7 +77,7 @@
 		<div class="negrito"><a for="c_item4" href="javascript:void(0)" onclick="helpDisplay(this)">Capa do Álbum</a></div>
 		<div id="c_item4" display="false" class="oculto">
 			<div class="margemabaixo">
-				Quando você sobre as primeiras fotos da galeria, o sistema escolhe automáticamente uma delas para a <i>capa</i> do álbum. Claro que você pode alterar depois conforme
+				Quando você sobe as primeiras fotos da galeria, o sistema escolhe automaticamente uma delas para a <i>capa</i> do álbum. Claro que você pode alterar depois conforme
 				o seu gosto. Para tal, basta que você selecione a imagem, e após ela abrir, clique no botão "capa" logo abaixo da imagem.
 			</div>
 			<div class="alert alert-danger">
@@ -96,7 +96,7 @@
 			</div>
 			<div class="alert alert-danger">
 			  <strong>Como faz para excluir todas as fotos de uma vez?</strong><br />
-			  Para o <i>Administrador</i> isto é possível, o botão que elimina todas as fotos do álbum de uma vez está no rodadé da página do álbum.<br />
+			  Para o <i>Administrador</i> isto é possível, o botão que elimina todas as fotos do álbum de uma vez está no rodapé da página do álbum.<br />
 			  A senha do Administrador será exigida para esta operação.
 			</div>
 		</div>
