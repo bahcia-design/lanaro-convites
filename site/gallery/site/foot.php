@@ -4,7 +4,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Imagine Sites <?php echo date("Y"); ?></p>
+                    <p>Copyright &copy; Lá na Rô Convites e Arte <?php echo date("Y"); ?></p>
                 </div>
             </div>
         </footer>
