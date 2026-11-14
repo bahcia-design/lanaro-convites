@@ -12,7 +12,7 @@
     <title>Lá na Rô Convites e Arte</title>
     <meta name="description" content="Lá na Rô Convites e Arte">
     <meta name="keywords" content="convites, arte, casamento, padrinhos, festas, eventos">
-    <meta name="author" content="imaginesites.com.br">
+    <meta name="author" content="Lá na Rô Convites e Arte">
 
     <!-- Favicons
     ================================================== -->

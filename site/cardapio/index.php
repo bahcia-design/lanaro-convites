@@ -9,7 +9,7 @@
     <title>Cardápio</title>
     <meta name="description" content="Lá na Rô Convites e Arte">
     <meta name="keywords" content="convites, arte, casamento, padrinhos, festas, eventos">
-    <meta name="author" content="imaginesites.com.br">
+    <meta name="author" content="Lá na Rô Convites e Arte">
 
 	<!-- Bootstrap -->
     <link rel="stylesheet" type="text/css"  href="../css/bootstrap.css">
